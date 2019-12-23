@@ -16,4 +16,9 @@ public class CodeReviewState implements State {
         task.setState(new DoneState());
         System.out.println("Set state 'done'");
     }
+
+    @Override
+    public String toString() {
+        return "CodeReviewState";
+    }
 }

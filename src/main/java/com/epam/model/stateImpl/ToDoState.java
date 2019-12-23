@@ -10,4 +10,9 @@ public class ToDoState implements State {
         task.setState(new InProgressState());
         System.out.println("Set state 'inProgress'");
     }
+
+    @Override
+    public String toString() {
+        return "ToDoState";
+    }
 }

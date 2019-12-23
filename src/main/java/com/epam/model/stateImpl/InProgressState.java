@@ -17,4 +17,8 @@ public class InProgressState implements State {
         System.out.println("Set state 'codeReview'");
     }
 
+    @Override
+    public String toString() {
+        return "InProgressState";
+    }
 }
