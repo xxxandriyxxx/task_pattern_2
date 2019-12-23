@@ -18,6 +18,22 @@ public class Task {
         this.state = state;
     }
 
+    public void toDo() {
+        state.toDo(this);
+    }
+
+    public void inProgress() {
+        state.inProgress(this);
+    }
+
+    public void codeReview() {
+        state.codeReview(this);
+    }
+
+    public void done() {
+        state.done(this);
+    }
+    
     @Override
     public String toString() {
         return "Task" + taskNumber;
