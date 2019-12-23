@@ -47,7 +47,8 @@ public class View {
     }
 
     private void createNewTask() {
-        controller.createNewTask();
+        Task task = controller.createNewTask();
+        logger.info(task + " created!");
     }
 
     private boolean printTaskList() {

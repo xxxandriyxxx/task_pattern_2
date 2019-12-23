@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Model {
 
-    void createNewTask();
+    Task createNewTask();
 
     List<Task> getTaskList();
 

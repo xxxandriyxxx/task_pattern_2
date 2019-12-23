@@ -12,8 +12,8 @@ public class BusinessLogic implements Model {
     }
 
     @Override
-    public void createNewTask() {
-        domain.createNewTask();
+    public Task createNewTask() {
+        return domain.createNewTask();
     }
 
     @Override

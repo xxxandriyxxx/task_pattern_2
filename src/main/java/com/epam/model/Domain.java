@@ -11,8 +11,10 @@ public class Domain {
         taskList = new ArrayList<>();
     }
 
-    public void createNewTask() {
-        taskList.add(new Task());
+    public Task createNewTask() {
+        Task task = new Task();
+        taskList.add(task);
+        return task;
     }
 
     public void setTask(int index, Task task) {

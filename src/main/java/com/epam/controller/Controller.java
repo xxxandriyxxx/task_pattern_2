@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Controller {
 
-    void createNewTask();
+    Task createNewTask();
 
     List<Task> getTaskList();
 

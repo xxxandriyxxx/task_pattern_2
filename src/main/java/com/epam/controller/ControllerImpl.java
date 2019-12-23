@@ -14,8 +14,8 @@ public class ControllerImpl implements Controller {
     }
 
     @Override
-    public void createNewTask() {
-        businessLogic.createNewTask();
+    public Task createNewTask() {
+        return businessLogic.createNewTask();
     }
 
     @Override
