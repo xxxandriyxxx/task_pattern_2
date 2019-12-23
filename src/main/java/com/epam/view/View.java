@@ -3,6 +3,8 @@ package com.epam.view;
 import com.epam.controller.Controller;
 import com.epam.controller.ControllerImpl;
 import com.epam.model.Task;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -16,10 +18,13 @@ public class View {
     private Map<String, Printable> methodsMenu;
     private Scanner input;
     private String keyMenu;
+    private Logger logger;
 
     public View() {
         input = new Scanner(System.in);
+        logger = LogManager.getLogger(View.class);
         controller = new ControllerImpl();
+
         menu = new LinkedHashMap<>();
         menu.put("1", " 1 - create new task");
         menu.put("2", " 2 - show all tasks");
@@ -29,6 +34,7 @@ public class View {
         menu.put("6", " 6 - change state of selected task to 'code review'");
         menu.put("7", " 7 - change state of selected task to 'done'");
         menu.put("Q", " q - exit");
+
         methodsMenu = new LinkedHashMap<>();
         methodsMenu.put("1", this::createNewTask);
         methodsMenu.put("2", this::printTaskList);
@@ -48,12 +54,12 @@ public class View {
         List<Task> taskList = controller.getTaskList();
         int i = 0;
         if (taskList.isEmpty()) {
-            System.out.println("No tasks!");
+            logger.error("No tasks!");
             return false;
         } else {
             for (Task t : taskList) {
                 i++;
-                System.out.println(i + ": " + t + " (state = " + t.getState() + ")");
+                logger.info(i + ": " + t + " (state = " + t.getState() + ")");
             }
             return true;
         }
@@ -62,13 +68,13 @@ public class View {
     private void selectWorkTask() {
         boolean tasksExist = printTaskList();
         if (tasksExist) {
-            System.out.println("-------------------------");
-            System.out.println("Enter the task number:");
+            logger.trace("-------------------------");
+            logger.trace("Enter the task number:");
             try {
                 keyMenu = input.nextLine();
                 controller.setSelectedTask(Integer.parseInt(keyMenu) - 1);
             } catch (Exception e) {
-                System.out.println("You entered the wrong symbol !!!");
+                logger.error("You entered the wrong symbol !!!");
             }
         }
     }
@@ -95,29 +101,29 @@ public class View {
 
     private void outputMenu() {
         Task selectedTask = controller.getSelectedTask();
-        System.out.println("\n==================== MENU ====================");
+        logger.trace("\n==================== MENU ====================");
         if (selectedTask != null) {
-            System.out.println("Selected task = " + selectedTask +
+            logger.info("Selected task = " + selectedTask +
                     " (state = " + selectedTask.getState() + ")");
         } else {
-            System.out.println("No selected task");
+            logger.info("No selected task");
         }
         System.out.println("----------------------------------------------");
         for (String str : menu.values()) {
-            System.out.println(str);
+            logger.trace(str);
         }
     }
 
     public void show() {
         do {
             outputMenu();
-            System.out.println("----------------------------------------------");
-            System.out.println("Enter the menu point:");
+            logger.trace("----------------------------------------------");
+            logger.trace("Enter the menu point:");
             keyMenu = input.nextLine().toUpperCase();
             try {
                 methodsMenu.get(keyMenu).print();
             } catch (Exception e) {
-                System.out.println("You entered the wrong symbol !!!");
+                logger.error("You entered the wrong symbol !!!");
             }
         } while (!keyMenu.equals("Q"));
     }
