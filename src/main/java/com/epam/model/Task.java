@@ -1,6 +1,6 @@
-package com.epam;
+package com.epam.model;
 
-import com.epam.impl.ToDoState;
+import com.epam.model.stateImpl.ToDoState;
 
 public class Task {
 

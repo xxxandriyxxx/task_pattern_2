@@ -1,7 +1,7 @@
-package com.epam.impl;
+package com.epam.model.stateImpl;
 
-import com.epam.State;
-import com.epam.Task;
+import com.epam.model.State;
+import com.epam.model.Task;
 
 public class InProgressState implements State {
 

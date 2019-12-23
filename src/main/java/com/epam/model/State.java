@@ -1,4 +1,4 @@
-package com.epam;
+package com.epam.model;
 
 public interface State {
 
