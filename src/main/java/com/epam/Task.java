@@ -33,7 +33,7 @@ public class Task {
     public void done() {
         state.done(this);
     }
-    
+
     @Override
     public String toString() {
         return "Task" + taskNumber;
