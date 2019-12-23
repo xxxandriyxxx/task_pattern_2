@@ -34,6 +34,14 @@ public class Task {
         state.done(this);
     }
 
+    public int getTaskNumber() {
+        return taskNumber;
+    }
+
+    public State getState() {
+        return state;
+    }
+
     @Override
     public String toString() {
         return "Task" + taskNumber;
