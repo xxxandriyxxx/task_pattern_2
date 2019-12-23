@@ -8,7 +8,7 @@ public class ToDoState implements State {
     @Override
     public void inProgress(Task task) {
         task.setState(new InProgressState());
-        System.out.println("Set state 'inProgress'");
+        logger.info("Set state 'inProgress'");
     }
 
     @Override
