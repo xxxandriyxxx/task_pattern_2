@@ -12,8 +12,7 @@ Configuration:
     Console:
       - name: Console_appender
         PatternLayout:
-          Pattern: "%highlight{%-5level}{FATAL=bg_red} %style{%date{yyyy-MM-dd HH:mm:ss.SSS}}{blue}
-        %class{1}:%L - %highlight{%msg} %xEx{short}%n"
+          Pattern: "%highlight{%msg} %xEx{short}%n"
   #------------------------------------------------------------------------------------------------
   Loggers:
 
@@ -23,4 +22,10 @@ Configuration:
         level: all
         AppenderRef:
           - ref: Console_appender
-            level: info
+            level: all
+      - name: com.epam.view.View
+        additivity: false
+        level: all
+        AppenderRef:
+          - ref: Console_appender
+            level: all
