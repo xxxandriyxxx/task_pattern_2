@@ -1,5 +1,7 @@
 package com.epam;
 
+import com.epam.impl.ToDoState;
+
 public class Task {
 
     private static int counter = 0;
@@ -9,6 +11,7 @@ public class Task {
     public Task() {
         counter++;
         taskNumber = counter;
+        state = new ToDoState();
     }
 
     public void setState(State state) {
